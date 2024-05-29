@@ -1,17 +1,10 @@
 pipeline {
     agent any
-
     environment {
         NODE_ENV = 'production'
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/m011amad/6.2HD.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 script {
@@ -27,35 +20,13 @@ pipeline {
                 }
             }
         }
-
+        
         stage('Deploy') {
             steps {
                 script {
-                    sh './deploy.sh'
+                    sh "curl 'https://api.render.com/deploy/srv-cpbi8ktds78s73f06mj0?key=v_uFivd4nMg'"
                 }
             }
-        }
-
-        stage('Release') {
-            steps {
-                script {
-                    def version = sh(script: 'node -p "require(\'./package.json\').version"', returnStdout: true).trim()
-                    sh "git tag v${version}"
-                    sh 'git push origin --tags'
-                }
-            }
-        }
-    }
-
-    post {
-        always {
-            cleanWs()
-        }
-        success {
-            echo 'Build succeeded!'
-        }
-        failure {
-            echo 'Build failed!'
         }
     }
 }
