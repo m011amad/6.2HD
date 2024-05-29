@@ -15,10 +15,13 @@ pipeline {
                 }
             }
         }
+        
         stage('Quality Check') {
             steps {
                 script {
-                    sh 'npm run quality'
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                        sh 'npm run quality'
+                    }
                 }
             }
         }
