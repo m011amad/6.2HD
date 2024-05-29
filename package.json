@@ -17,11 +17,11 @@
     "mocha": "^10.4.0",
     "mongodb": "^6.5.0",
     "monodb": "^1.5.1",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "@eslint/js": "^9.3.0",
+    "eslint": "^9.3.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.3.0",
-    "eslint": "^9.3.0",
     "globals": "^15.3.0",
     "netlify-cli": "^17.24.0"
   }
