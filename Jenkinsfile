@@ -15,6 +15,13 @@ pipeline {
                 }
             }
         }
+        stage('Quality Check') {
+            steps {
+                script {
+                    sh 'npm run quality'
+                }
+            }
+        }
 
         stage('Test') {
             steps {
