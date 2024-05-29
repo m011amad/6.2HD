@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools: {
+        nodejs 'nodejs'
+    }
     environment {
         NODE_ENV = 'production'
     }
@@ -20,7 +23,7 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Deploy') {
             steps {
                 script {
